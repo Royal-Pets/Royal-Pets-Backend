@@ -74,7 +74,7 @@ function addmessageHandler(req, res) {
       let newMessage = new messageModel(req.body);
       messagesData.push(newMessage);
       newMessage.save();
-      res.send(messagesData);
+      res.send("OK");
     }
   });
 }
@@ -94,4 +94,15 @@ function addAdoptHandler(req, res) {
   });
 }
 
+server.delete("/removeAdopt", removeAdoptHandler);
+
+function removeAdoptHandler(req, res) {
+  adoptModel.deleteOne(req.body, (error) => {
+    if (error) {
+      res.send("cant find user");
+    } else {
+      res.send("Deleted");
+    }
+  });
+}
 server.listen(PORT, () => console.log(`listening on ${PORT}`));
