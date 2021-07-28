@@ -4,6 +4,8 @@ const adoptSchema = new mongoose.Schema({
   pet: String,
   owner: String,
   email: String,
+  age: String,
+  bread: String,
   description: String,
   img_url: String,
 });
